@@ -11,18 +11,11 @@ date_and_time <- paste(data$Date, data$Time)
 data$Date_and_time <- strptime(date_and_time, format = "%Y-%m-%d %H:%M:%S")
 
 ##Open pgn file
-png(filename = "plot3.png", height = 480, width = 480)
+png(filename = "plot2.png", height = 480, width = 480)
 
-## Plot 3
-with(data, {
-    plot(Date_and_time, Sub_metering_1, type="l",
-         ylab="Energy sub metering", xlab="")
-    lines(Date_and_time, Sub_metering_2, type = "l", col = "red")
-    lines(Date_and_time, Sub_metering_3, type = "l", col = "blue")
-})
-
-legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-       lty=1, lwd=2, col=c("black", "red", "blue"))
+## Plot 2
+plot(data$Date_and_time, data$Global_active_power, type="l",
+     ylab="Global Active Power (kilowatts)", xlab="")
 
 ##Close device
 dev.off()
